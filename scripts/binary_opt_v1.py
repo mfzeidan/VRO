@@ -62,6 +62,7 @@ small_rotation = pd.DataFrame(d3)
 #### THIS IS THE PLAYER VALUE TABLE CREATION PORTION OF THE SCRIPT########
 
 #####################################################################################
+
 idx = [1, 2]
 d2 = {'A-Player': pd.Series(['Player1', 'Player2'], index=idx),
      'FR': pd.Series([2,3], index=idx),
@@ -85,6 +86,8 @@ small_rotation['total'] = small_rotation.sum(axis=1)
 
 #adding a total variable for the columns to make sure that a player can only be 1 or the other
 
+
+#these variables are used for the constraints at the end of the script
 BackRow_Total = small_rotation['BR'].sum()
 FrontRow_Total = small_rotation['FR'].sum()
 
@@ -103,14 +106,11 @@ rotation_totals['totals'] = rotation_totals.sum(axis=1)
 
 
 
-
+###these are the 2 variables to calculate how much value is in the backrow and front row
 BackRow_Total_rotation = rotation_totals['BR'].sum()
 FrontRow_Total_rotation = rotation_totals['FR'].sum()
 
-print BackRow_Total_rotation
-print FrontRow_Total_rotation
-
-
+## combine the two values and that is what we're trying to maximize
 total_rotation_value = BackRow_Total_rotation + FrontRow_Total_rotation
 
 
@@ -143,7 +143,7 @@ vball_model += BR_x1 + BR_x2 == 1
 
 
 
-#vball_model.writeLP("vball.lp")
+vball_model.writeLP("vball.lp")
 
 
 vball_model.solve()
@@ -154,5 +154,5 @@ print("Status:", LpStatus[vball_model.status])
 for v in vball_model.variables():
     print(v.name, "=", v.varValue)
 print "---------------"
-print total_rotation_value
+
 
