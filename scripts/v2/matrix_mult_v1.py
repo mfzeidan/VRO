@@ -47,6 +47,8 @@ FR_player1_p1_lookup = full_rotation.lookup([1],[1])
 
 
 
+
+#this is to find where everybody is in the above matrix
 player_location = {}
 
 for i in range(1,7):
@@ -103,16 +105,20 @@ print r1_skill
 ### 4, 3, and 2 are all front row lookups
 
 
+### now lets build the dict that represents how the above layout would move forward one rotation
 
 
 
+idx = [1, 2,3,4,5,6]
+d_r2 = {'channel': pd.Series(['Player1', 'Player2', 'Player3','Player4','Player5','Player6'], index=idx),
+     1: pd.Series([1,0,0,0,0,0], index=idx),
+     2: pd.Series([0,1,0,0,0,0], index=idx),
+     3: pd.Series([0,0,1,0,0,0], index=idx),
+     4: pd.Series([0,0,0,1,0,0], index=idx),
+     5: pd.Series([0,0,0,0,1,0], index=idx),
+     6: pd.Series([0,0,0,0,0,1], index=idx)}
+full_rotation2 = pd.DataFrame(d_r2)
 
-
-
-
-##### with this we need to find out what each player's skill level is for their respective spots
-
-
-
+print full_rotation2
 
 
