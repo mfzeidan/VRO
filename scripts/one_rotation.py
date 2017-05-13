@@ -219,15 +219,77 @@ for v in vball_model.variables():
 		if "BR" in v.name:
 			br_list_r1.append(v.name)
 
-print br_list_r1
+
+###### now figure out which FR player is weakest and which BR player is the best at FR
+
+
+## here we need to figure out which FR player we want to subout based on who is weakest
+
+
 print fr_list_r1
 
+print skill_levels
 
-### this person needs to come in
 
-print "this person needs to come in"
+# let's do a simple lookup of FRP4 to check his front row value
 
-print sub_list
+print "-------------- FR Info -------------"
+
+fr_skill_list_r1 = {}
+
+
+print "player 3 FR"
+FR_p3_skill = skill_levels.lookup([3],['FR'])
+print "player 4 FR"
+FR_p4_skill = skill_levels.lookup([4],['FR'])
+print "player 6 FR"
+FR_p6_skill = skill_levels.lookup([6],['FR'])
+
+fr_skill_list_r1['Player3'] = FR_p3_skill[0]
+fr_skill_list_r1['Player4'] = FR_p4_skill[0]
+fr_skill_list_r1['Player6'] = FR_p6_skill[0]
+
+print fr_skill_list_r1
+
+print "-------------- BR Info -------------"
+
+
+### here we need to lookup the back row players skills
+### note that we are just looking up the backrow players FRONT ROW SKILL in order to decide who should move up 
+### to the FR first. Though this is the correct way to do it, need to see how the model will adjust when
+### making changes like this in the rotation
+
+br_skill_list_r1 = {}
+
+print "This is the BR player's FR skills"
+
+print "player1 FR"
+BR_p1_skill= skill_levels.lookup([1],['FR'])
+
+
+print "player2 FR"
+
+BR_p2_skill= skill_levels.lookup([2],['FR'])
+
+
+print "player5 FR"
+
+BR_p5_skill= skill_levels.lookup([5],['FR'])
+
+
+br_skill_list_r1['Player1'] = BR_p1_skill[0]
+br_skill_list_r1['Player2'] = BR_p2_skill[0]
+br_skill_list_r1['Player5'] = BR_p5_skill[0]
+
+print br_skill_list_r1
+
+print "------------- analysis -------------"
+
+print "so now with this we can decide to get player 6"
+print "as a sub and move player2 to the front row"
+
+
+
 
 
 
