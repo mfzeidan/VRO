@@ -168,6 +168,41 @@ def sum_BR_skill(player_skill_dic):
 
 ########################
 
+def sum_total_skill(player_skill_dic):
+
+	total = 0
+	for key in player_skill_dic.iteritems():
+
+		if key[0] == 1:
+			location = "BR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 5:
+			location = "BR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 6:
+			location = "BR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 4:
+			location = "FR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 3:
+			location = "FR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 2:
+			location = "FR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+
+	print total
+
+########################
+
+
 print "FR TOTAL"	
 	
 sum_FR_skill(R1)
@@ -176,7 +211,7 @@ print "BR TOTAL"
 
 sum_BR_skill(R1)
 
-#def total_rotation_skill:
+sum_total_skill(R1)
 
 #####################
 
@@ -195,3 +230,4 @@ rotate(R1,R2)
 #print "--------------"
 #print R1
 #print R2
+
