@@ -80,7 +80,26 @@ def skill_lookup(rotation, dict_name):
 		
 		dict_name[key[0]] = skill_at_spot[0]
 
-###############33
+###############
+
+
+## this function moves everyone forward one spot
+
+def rotate(old_rotation, new_rotation):
+
+	for key in old_rotation.iteritems():
+
+		if key[1] == 6:
+			#print key[0],1
+			new_rotation[key[0]] = 1
+		else:
+			#print key[0],key[1]+1
+			new_rotation[key[0]] = key[1]+1
+
+
+
+
+
 
 
 	### round 1
@@ -101,14 +120,78 @@ skill_lookup(R1,R1_skill)
 
 print R1_skill
 
+#### before we rotate, lets sum the totals for front row skill, backrow skill and total skill for that entire rotation
+
+####################
+
+def sum_FR_skill(player_skill_dic):
+
+	total = 0
+	for key in player_skill_dic.iteritems():
+
+		if key[0] == 4:
+			location = "FR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 3:
+			location = "FR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 2:
+			location = "FR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+
+	print total
+
+########################3
+
+def sum_BR_skill(player_skill_dic):
+
+	total = 0
+	for key in player_skill_dic.iteritems():
+
+		if key[0] == 1:
+			location = "BR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 5:
+			location = "BR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+		if key[0] == 6:
+			location = "BR"
+			skill_at_spot = skill_levels.lookup([key[0]],[location])
+			total += skill_at_spot[0]
+
+	print total
+
+########################
+
+print "FR TOTAL"	
+	
+sum_FR_skill(R1)
+
+print "BR TOTAL"
+
+sum_BR_skill(R1)
+
+#def total_rotation_skill:
+
+#####################
 
 
 
 
+##### Here we rotate the players are do the same thing we did above again
+
+R2 = {}
 
 
 
+rotate(R1,R2)
 
 
-
-
+#print "--------------"
+#print R1
+#print R2
