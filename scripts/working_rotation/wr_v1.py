@@ -21,8 +21,8 @@ starting_rotation = pd.DataFrame(d)
 
 idx = [1,2,3,4,5,6]
 d2 = {'A-Player': pd.Series(['Player1', 'Player2','Player3','Player4','Player5','Player6'], index=idx),
-     'FR': pd.Series([2,3,7,7,2,4], index=idx),
-     'BR': pd.Series([7,7,3,4,3,3], index=idx)}
+     'FR': pd.Series([1,13,7,7,2,44], index=idx),
+     'BR': pd.Series([7,7,3,4,23,3], index=idx)}
 
 skill_levels = pd.DataFrame(d2)
 
@@ -211,6 +211,8 @@ print "BR TOTAL"
 
 sum_BR_skill(R1)
 
+print "TOTAL"
+
 sum_total_skill(R1)
 
 #####################
@@ -221,13 +223,75 @@ sum_total_skill(R1)
 ##### Here we rotate the players are do the same thing we did above again
 
 R2 = {}
+R3 = {}
+R4 = {}
+R5 = {}
 
 
+print "----------R1------------"
 
+
+print R1
+print R1_skill
+sum_FR_skill(R1)
+sum_BR_skill(R1)
+sum_total_skill(R1)
+
+print "----------R2------------"
 rotate(R1,R2)
 
+R2_skill = {}
 
-#print "--------------"
-#print R1
-#print R2
+skill_lookup(R2,R2_skill)
+
+print R2
+
+print R2_skill
+sum_FR_skill(R2)
+sum_BR_skill(R2)
+sum_total_skill(R2)
+
+print "----------R3------------"
+
+rotate(R2,R3)
+
+R3_skill = {}
+
+skill_lookup(R3,R3_skill)
+
+print R3
+
+print R3_skill
+
+sum_FR_skill(R3)
+sum_BR_skill(R3)
+sum_total_skill(R3)
+
+
+print "----------R4------------"
+rotate(R3,R4)
+
+R4_skill = {}
+
+skill_lookup(R4,R4_skill)
+
+print R4
+
+
+print R4_skill
+
+sum_FR_skill(R4)
+sum_BR_skill(R4)
+sum_total_skill(R4)
+
+print "----------R5------------"
+
+
+
+
+
+print "--------------"
+
+
+
 
