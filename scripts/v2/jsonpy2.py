@@ -252,14 +252,20 @@ FR_FINAL = [p4,p3,two_spot]
 
 
 print "<br>"
-
+print "<center><h1>"
+print "----------------"
+print "<br>"
 print names[five_spot-1]
 print names[p6-1]
 print names[p1-1]
+print "</h1></center>"
+
 
 print "<br>"
+print "<center><h1>"
 print names[p4-1]
 print names[p3-1]
 print names[two_spot-1]
+print "</h1></center>"
 
 
