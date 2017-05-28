@@ -40,32 +40,32 @@ key_list = []
 
 
 p1_name =  "Mark1"
-p1_FR = 2
-p1_BR = 1
+p1_FR = 1
+p1_BR = 4
 p1_setter = 1
 
 p2_name = "Mark2"
-p2_FR = 2
-p2_BR = 1
+p2_FR = 1
+p2_BR = 4
 p2_setter = 0
 
 p3_name =  "Mark3"
 p3_FR = 3
-p3_BR = 1
+p3_BR = 5
 p3_setter = 1
 
 p4_name =  "Mark4"
-p4_FR = 2
+p4_FR = 5
 p4_BR = 1
 p4_setter = 0
 
 p5_name =  "Mark5"
-p5_FR = 2
+p5_FR = 5
 p5_BR = 1
 p5_setter = 0
 
 p6_name =  "Mark6"
-p6_FR = 2
+p6_FR = 5
 p6_BR = 1
 p6_setter = 0
 
@@ -288,11 +288,14 @@ setters = {p1_name: p1_setter,p2_name:p2_setter,p3_name:p3_setter,p4_name:p4_set
 print "FR: 4:3:2"
 print "BR: 5:6:1"
 
+print "HERE IS THE INITIAL ROTATION THAT PULP MAKES"
+
 
 
 full_initial_rotation = [names[five_spot-1],names[p6-1],names[p1-1],names[p4-1],names[p3-1],names[two_spot-1]]
+print full_initial_rotation	
 
-
+print "----------------------------------"
 
 rotation_setters_initial = {names[five_spot-1]:setters[names[five_spot-1]],names[p6-1]:setters[names[p6-1]],names[p1-1]:setters[names[p1-1]],names[p4-1]:setters[names[p4-1]],names[p3-1]:setters[names[p3-1]],names[two_spot-1]:setters[names[two_spot-1]]}
 
@@ -386,6 +389,11 @@ def setter_construction(initial_rotation):
 				BR_skill = skill_levels.lookup([name_list[key]],["FR"])[0]
 				BR_setters_FR_skill[key] = BR_skill
 
+
+
+		print "remember we are looking to see which BR setter is better in the FR"
+		print BR_setters_FR_skill
+
 		#### this will need to be fixed if both setters have equal skillsets
 
 		better_FR = max(BR_setters_FR_skill.iteritems(), key=operator.itemgetter(1))[0]
@@ -438,6 +446,8 @@ def two_BR_setters(which_setter,sticky_setter):
 
 	dont_move_setter = full_initial_rotation.index(sticky_setter)
 
+
+	print "DONT MOVE SETTER NUMBER HERE"
 	print dont_move_setter
 
 	
@@ -449,6 +459,69 @@ def two_BR_setters(which_setter,sticky_setter):
 
 	if dont_move_setter == 5:
 		# if the sticky setter is in 5, lets swap the other setter with the player in the 0 spot in the list index
+		print "sticky in 5 spot"
+		print "this is the setter that moves"
+		#lets find where this setter is in the starting lineup
+		print which_setter
+
+		where_is_moving_setter = full_initial_rotation[full_initial_rotation.index(which_setter)]
+		print where_is_moving_setter
+		#now find the player that you gotta move
+		
+		player_to_switch = full_initial_rotation[2]
+		print player_to_switch
+
+
+		a, b = full_initial_rotation.index(which_setter), full_initial_rotation.index(player_to_switch)
+
+		full_initial_rotation[b], full_initial_rotation[a] = full_initial_rotation[a], full_initial_rotation[b]
+
+		print full_initial_rotation
+
+	if dont_move_setter == 4:
+		# if the sticky setter is in 5, lets swap the other setter with the player in the 0 spot in the list index
+		print "sticky in 5 spot"
+		print "this is the setter that moves"
+		#lets find where this setter is in the starting lineup
+		print which_setter
+
+		where_is_moving_setter = full_initial_rotation[full_initial_rotation.index(which_setter)]
+		print where_is_moving_setter
+		#now find the player that you gotta move
+		
+		player_to_switch = full_initial_rotation[1]
+		print player_to_switch
+
+
+		a, b = full_initial_rotation.index(which_setter), full_initial_rotation.index(player_to_switch)
+
+		full_initial_rotation[b], full_initial_rotation[a] = full_initial_rotation[a], full_initial_rotation[b]
+
+		print full_initial_rotation
+
+	if dont_move_setter == 3:
+		# if the sticky setter is in 5, lets swap the other setter with the player in the 0 spot in the list index
+		print "sticky in 5 spot"
+		print "this is the setter that moves"
+		#lets find where this setter is in the starting lineup
+		print which_setter
+
+		where_is_moving_setter = full_initial_rotation[full_initial_rotation.index(which_setter)]
+		print where_is_moving_setter
+		#now find the player that you gotta move
+		
+		player_to_switch = full_initial_rotation[0]
+		print player_to_switch
+
+
+		a, b = full_initial_rotation.index(which_setter), full_initial_rotation.index(player_to_switch)
+
+		full_initial_rotation[b], full_initial_rotation[a] = full_initial_rotation[a], full_initial_rotation[b]
+
+		print full_initial_rotation
+
+		
+		
 	
 
 	
