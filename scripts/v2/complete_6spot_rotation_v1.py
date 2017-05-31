@@ -347,6 +347,7 @@ def find_setters(rotation):
 		two_fr_setters(FR_setter)
 	if len(BR_setter) == 2:
 		print "2 backrow setters"
+		two_fr_setters(BR_setters)
 
 
 def two_fr_setters(fr_Setters):
@@ -361,13 +362,113 @@ def two_fr_setters(fr_Setters):
 	### find out which setter is worse of the 2
 	moving_setter = min(setter_FR_skillset.iteritems(),key=operator.itemgetter(1))[0]
 	print moving_setter
+
+	for player_info in sorted_rotation_list:
+		if player_info[0] == moving_setter:
+			moving_setter_spot = player_info[1]
 	
 	### we need to find out where the "sticky setter" is
+	sticky_setter = max(setter_FR_skillset.iteritems(),key=operator.itemgetter(1))[0]
+
+	for player_info in sorted_rotation_list:
+		if player_info[0] == sticky_setter:
+			sticky_setter_spot = player_info[1]
+
+	if sticky_setter_spot == 1:
+		# if the sticky setter is in the 1 we need to move the other setter to the 4 spot
+		# lets make the player in the 4 spot go to where the moving setter is
+		for player_info in sorted_rotation_list:
+			if player_info[1] == 4:
+				player_info[1] = sticky_setter_spot
+
+		for player_info in sorted_rotation_list:
+			if player_info[0] == moving_setter:
+				player_info[1] = 4
+
+	if sticky_setter_spot == 2:
+		# if the sticky setter is in the 2 we need to move the other setter to the 5 spot
+		# lets make the player in the 5 spot go to where the moving setter is
+		for player_info in sorted_rotation_list:
+			if player_info[1] == 5:
+				player_info[1] = sticky_setter_spot
+
+		for player_info in sorted_rotation_list:
+			if player_info[0] == moving_setter:
+				player_info[1] = 5
+
+	if sticky_setter_spot == 3:
+		# if the sticky setter is in the 3 we need to move the other setter to the 6 spot
+		# lets make the player in the 6 spot go to where the moving setter is
+		for player_info in sorted_rotation_list:
+			if player_info[1] == 6:
+				player_info[1] = sticky_setter_spot
+
+		for player_info in sorted_rotation_list:
+			if player_info[0] == moving_setter:
+				player_info[1] = 6
+	print sorted_rotation_list
+
+
+		
 
 def two_br_setters(br_Setters):
 	#### if there are 2 setters in the back row, we move the worse of the 2 BR players to the front
+	print br_Setters
+	setter_BR_skillset = {}
+	for setter in br_Setters:
+		
+		setter_BR_skillset[setter] = skill_levels.lookup([setter],["BR"])[0]
+	print setter_FR_skillset
 
-	pass
+	### find out which setter is worse of the 2
+	moving_setter = min(setter_BR_skillset.iteritems(),key=operator.itemgetter(1))[0]
+	print moving_setter
+
+	for player_info in sorted_rotation_list:
+		if player_info[0] == moving_setter:
+			moving_setter_spot = player_info[1]
+	
+	### we need to find out where the "sticky setter" is
+	sticky_setter = max(setter_FR_skillset.iteritems(),key=operator.itemgetter(1))[0]
+
+	for player_info in sorted_rotation_list:
+		if player_info[0] == sticky_setter:
+			sticky_setter_spot = player_info[1]
+
+	if sticky_setter_spot == 4:
+		# if the sticky setter is in the 4 we need to move the other setter to the 1 spot
+		# lets make the player in the 1 spot go to where the moving setter is
+		for player_info in sorted_rotation_list:
+			if player_info[1] == 1:
+				player_info[1] = sticky_setter_spot
+
+		for player_info in sorted_rotation_list:
+			if player_info[0] == moving_setter:
+				player_info[1] = 1
+
+	if sticky_setter_spot == 5:
+		# if the sticky setter is in the 2 we need to move the other setter to the 5 spot
+		# lets make the player in the 5 spot go to where the moving setter is
+		for player_info in sorted_rotation_list:
+			if player_info[1] == 2:
+				player_info[1] = sticky_setter_spot
+
+		for player_info in sorted_rotation_list:
+			if player_info[0] == moving_setter:
+				player_info[1] = 2
+
+	if sticky_setter_spot == 6:
+		# if the sticky setter is in the 3 we need to move the other setter to the 6 spot
+		# lets make the player in the 6 spot go to where the moving setter is
+		for player_info in sorted_rotation_list:
+			if player_info[1] == 3:
+				player_info[1] = sticky_setter_spot
+
+		for player_info in sorted_rotation_list:
+			if player_info[0] == moving_setter:
+				player_info[1] = 3
+	print sorted_rotation_list
+
 
 def mixed_setters(fr_Setter,br_Setter):
 	### if there is one in the front and one in the back, we move the front player to align with the backrow setter
